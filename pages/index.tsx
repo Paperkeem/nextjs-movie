@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Seo from "@/components/Seo";
-import LoadingSpinner from "@/components/LoadingSpinner";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export interface Imovies {
   adult: boolean;
@@ -23,14 +24,24 @@ export interface Imovies {
 export default function Home({
   results,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const router = useRouter();
+  const onClick = (id: string, title: string) => {
+    router.push(`/movies/${title}/${id}`);
+  };
   return (
     <>
       <Seo title="Home" />
       <div className="container">
         {results?.map((movie) => (
-          <div key={movie.id} className="movie">
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-            <h4 key={movie.id}>{movie.original_title}</h4>
+          <div
+            onClick={() => onClick(movie.id, movie.original_title)}
+            className="movie"
+            key={movie.id}
+          >
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+            <Link href={`/movies/${movie.original_title}/${movie.id}`}>
+              <h4 key={movie.id}>{movie.original_title}</h4>
+            </Link>
           </div>
         ))}
       </div>
@@ -40,6 +51,9 @@ export default function Home({
           grid-template-columns: 1fr 1fr;
           gap: 20px;
           padding-top: 10px;
+        }
+        .movie {
+          cursor: pointer;
         }
         .movie img {
           max-width: 100%;

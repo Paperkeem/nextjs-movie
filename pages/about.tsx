@@ -5,7 +5,7 @@ export default function about() {
   return (
     <>
       <Seo title="About" />
-      <p>What the... ! Amazing</p>
+      <h4>About Me</h4>
     </>
   );
 }
