@@ -25,7 +25,7 @@ export default function Home({
   results,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
-  const onClick = (id: string, title: string) => {
+  const onClick = (id: number, title: string) => {
     router.push(`/movies/${title}/${id}`);
   };
   return (
