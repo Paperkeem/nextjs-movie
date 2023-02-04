@@ -8,25 +8,40 @@ export default function Detail({ params, results }: any) {
   console.log(results);
 
   return (
-    <>
+    <div className="container">
       <Seo title={title} />
-      <h4>{title}</h4>
+      <h3>{title}</h3>
       <img
         src={`https://image.tmdb.org/t/p/w500${results.poster_path}`}
         alt=""
       />
       <h4>release : {results.release_date}</h4>
       <h4>budget : $ {results.budget}</h4>
+      <h4>popularity : {results.popularity}</h4>
+      <h4>vote average : {results.vote_average}</h4>
+      <h4>vote count : {results.vote_count}</h4>
       <h4>{results.overview}</h4>
       <style jsx>{`
+        .container {
+          display: flex;
+          flex-direction: column;
+          background-color: whitesmoke;
+          margin: 0 auto;
+          align-items: center;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
         h4 {
           text-align: center;
+          margin: 10px;
         }
         img {
-          width: 100%;
+          border-radius: 7px;
+          margin: 0 auto;
+          width: 70%;
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
         }
       `}</style>
-    </>
+    </div>
   );
 }
 
