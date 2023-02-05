@@ -47,7 +47,9 @@ export default function Detail({ params, results }: any) {
 
 export async function getServerSideProps({ params: { params } }: any) {
   const id = params[1];
-  const results = await (await fetch(`/api/movies/${id}`)).json();
+  const results = await (
+    await fetch(`http://localhost:3000/api/movies/${id}`)
+  ).json();
 
   return { props: { params, results } };
 }

@@ -21,18 +21,24 @@ export interface Imovies {
   vote_count: number;
 }
 
-export default function Home({
-  results,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home() {
   const router = useRouter();
+  const [movies, setMovies] = useState<Imovies>();
   const onClick = (id: number, title: string) => {
     router.push(`/movies/${title}/${id}`);
   };
+
+  useEffect(() => {
+    (async () => {
+      const { results: data } = await (await fetch(`/api/movies`)).json();
+      setMovies(data);
+    })();
+  }, []);
   return (
     <>
       <Seo title="Home" />
       <div className="container">
-        {results?.map((movie) => (
+        {movies?.map((movie) => (
           <div
             onClick={() => onClick(movie.id, movie.original_title)}
             className="movie"
@@ -74,9 +80,11 @@ export default function Home({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<{
-  results: Imovies[];
-}> = async () => {
-  const { results } = await (await fetch(`/api/movies`)).json();
-  return { props: { results: results || [] } };
-};
+// export const getServerSideProps: GetServerSideProps<{
+//   results: Imovies[];
+// }> = async () => {
+//   const { results } = await (
+//     await fetch(`http://localhost:3000/api/movies`)
+//   ).json();
+//   return { props: { results: results || [] } };
+// };
