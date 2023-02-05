@@ -79,6 +79,9 @@ export const getServerSideProps: GetServerSideProps<{
   results: Imovies[];
 }> = async () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const { results } = await (await fetch(`${API_URL}/api/movies`)).json();
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+  const { results } = await (
+    await fetch(`${API_URL}/api/movie/popular?api_key=${API_KEY}`)
+  ).json();
   return { props: { results: results } };
 };
