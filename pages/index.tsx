@@ -77,9 +77,6 @@ export default function Home({
 export const getServerSideProps: GetServerSideProps<{
   results: Imovies[];
 }> = async () => {
-  const { results } = await (
-    await fetch(`http://localhost:3000/api/movies`)
-  ).json();
-
-  return { props: { results } };
+  const { results } = await (await fetch(`/api/movies`)).json();
+  return { props: { results: results || [] } };
 };

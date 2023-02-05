@@ -5,7 +5,7 @@ import React from "react";
 export default function Detail({ params, results }: any) {
   const router = useRouter();
   const [title, id]: string[] = params || [];
-  console.log(results);
+  // console.log(results);
 
   return (
     <div className="container">
@@ -47,9 +47,7 @@ export default function Detail({ params, results }: any) {
 
 export async function getServerSideProps({ params: { params } }: any) {
   const id = params[1];
-  const results = await (
-    await fetch(`http://localhost:3000/api/movies/${id}`)
-  ).json();
+  const results = await (await fetch(`/api/movies/${id}`)).json();
 
   return { props: { params, results } };
 }

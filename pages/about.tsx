@@ -5,14 +5,16 @@ import React from "react";
 
 export default function about() {
   return (
-    <div className="container">
-      <Seo title="About" />
-      <Link href={"https://github.com/Paperkeem"}>
-        <div className="overview">
-          <Image src="/image/github.png" width={20} height={20} alt="" />
-          <span>About Me</span>
-        </div>
-      </Link>
+    <>
+      <div className="container">
+        <Seo title="About" />
+        <Link href={"https://github.com/Paperkeem"}>
+          <div className="overview">
+            <Image src="/image/github.png" width={20} height={20} alt="" />
+            <span>About Me</span>
+          </div>
+        </Link>
+      </div>
       <style jsx>{`
         .container {
           display: flex;
@@ -32,6 +34,6 @@ export default function about() {
           margin-left: 10px;
         }
       `}</style>
-    </div>
+    </>
   );
 }
