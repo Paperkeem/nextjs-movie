@@ -81,7 +81,7 @@ export const getServerSideProps: GetServerSideProps<{
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   const { results } = await (
-    await fetch(`${API_URL}/api/movie/popular?api_key=${API_KEY}`)
+    await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}`)
   ).json();
   return { props: { results: results } };
 };
