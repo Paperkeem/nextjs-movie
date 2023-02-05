@@ -23,7 +23,7 @@ export interface Imovies {
 
 export default function Home() {
   const router = useRouter();
-  const [movies, setMovies] = useState<Imovies>();
+  const [movies, setMovies] = useState<Imovies[]>();
   const onClick = (id: number, title: string) => {
     router.push(`/movies/${title}/${id}`);
   };
