@@ -47,10 +47,8 @@ export default function Detail({ params, results }: any) {
 
 export async function getServerSideProps({ params: { params } }: any) {
   const id = params[1];
-  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-  const results = await (
-    await fetch(`http://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
-  ).json();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const results = await (await fetch(`${API_URL}/movie/${id}`)).json();
 
   return { props: { params, results } };
 }
