@@ -1,4 +1,4 @@
-import Seo from "@/components/Seo";
+import Seo from "@/src/components/Seo";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

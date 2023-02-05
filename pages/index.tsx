@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Seo from "@/components/Seo";
+import Seo from "@/src/components/Seo";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
