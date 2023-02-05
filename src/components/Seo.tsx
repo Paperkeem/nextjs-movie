@@ -3,7 +3,7 @@ import React from "react";
 export default function Seo({ title }: { title: string }) {
   return (
     <Head>
-      <title>{title} | Next movies</title>
+      <title>{`${title} | Next movies`}</title>
     </Head>
   );
 }
